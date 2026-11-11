@@ -4,7 +4,7 @@ import { site } from '@/config/site';
 
 export type Field = { name: string; label: string; type?: string; required?: boolean; options?: string[]; full?: boolean; rows?: number };
 
-export default function DemoForm({ fields, actions = ['Submit'], context = {}, successTitle = 'Thank you', secondary = [] }: { fields: Field[]; actions?: string[]; context?: any; successTitle?: string; secondary?: string[] }) {
+export default function DemoForm({ fields, actions = ['Submit'], context = {}, successTitle = 'Thank you' }: { fields: Field[]; actions?: string[]; context?: any; successTitle?: string }) {
   const [err, setErr] = useState<Record<string, string>>({});
   const [done, setDone] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
@@ -12,8 +12,7 @@ export default function DemoForm({ fields, actions = ['Submit'], context = {}, s
 
   async function submit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const form = e.currentTarget;
-    const fd = new FormData(form);
+    const fd = new FormData(e.currentTarget);
     const action = ((e.nativeEvent as any).submitter as HTMLButtonElement)?.value || actions[0];
     const data: any = {}, er: Record<string, string> = {};
     fields.forEach((f) => {
@@ -44,7 +43,7 @@ export default function DemoForm({ fields, actions = ['Submit'], context = {}, s
   if (done)
     return (
       <div className="success" role="status">
-        <div className="tick">\u2713</div>
+        <div className="tick">✓</div>
         <h3>{successTitle}</h3>
         <p>{site.formEndpoint ? `Your request (${done}) has been sent. We will be in touch shortly.` : `Demo mode: your "${done}" entry passed validation, but this template is not connected to a backend, so nothing was sent or booked.`}</p>
         <button type="button" className="btn line sm" onClick={() => setDone(null)}>Submit another</button>
@@ -57,7 +56,7 @@ export default function DemoForm({ fields, actions = ['Submit'], context = {}, s
         <label key={f.name} className={f.full ? 'full' : ''}>
           <span>{f.label}{f.required && ' *'}</span>
           {f.options ? (
-            <select name={f.name} defaultValue="" aria-invalid={!!err[f.name]}><option value="" disabled>Select\u2026</option>{f.options.map((o) => <option key={o}>{o}</option>)}</select>
+            <select name={f.name} defaultValue="" aria-invalid={!!err[f.name]}><option value="" disabled>Select…</option>{f.options.map((o) => <option key={o}>{o}</option>)}</select>
           ) : f.rows ? (
             <textarea name={f.name} rows={f.rows} aria-invalid={!!err[f.name]} />
           ) : (
@@ -68,9 +67,9 @@ export default function DemoForm({ fields, actions = ['Submit'], context = {}, s
       ))}
       {err._form && <p className="err full">{err._form}</p>}
       <div className="full actions">
-        {actions.map((a, i) => <button key={a} value={a} disabled={busy} className={'btn ' + (i === 0 ? 'gold' : 'line')}>{busy ? 'Sending\u2026' : a}</button>)}
+        {actions.map((a, i) => <button key={a} value={a} disabled={busy} className={'btn ' + (i === 0 ? 'gold' : 'line')}>{busy ? 'Sending…' : a}</button>)}
       </div>
-      {!site.formEndpoint && <p className="full demo-note">Demo form \u2014 not connected to a backend. Submissions are not sent.</p>}
+      {!site.formEndpoint && <p className="full demo-note">Demo form — not connected to a backend. Submissions are not sent.</p>}
     </form>
   );
 }

@@ -42,10 +42,10 @@ export function PostCard({ p }: { p: Post }) {
   return (
     <article className="pcard">
       <Link href={'/blog/' + p.slug} className="pcard-img"><img src={p.cover} alt={p.title} loading="lazy" /></Link>
-      <p className="ptype">{p.category} \u00b7 {fmtDate(p.date)}</p>
+      <p className="ptype">{p.category} · {fmtDate(p.date)}</p>
       <h3><Link href={'/blog/' + p.slug}>{p.title}</Link></h3>
       <p>{p.excerpt}</p>
-      <Link className="more" href={'/blog/' + p.slug}>Read More \u2192</Link>
+      <Link className="more" href={'/blog/' + p.slug}>Read More →</Link>
     </article>
   );
 }

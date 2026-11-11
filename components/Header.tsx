@@ -33,7 +33,7 @@ export default function Header() {
         <div className="mnav">
           {site.nav.map(([l, h]) => <Link key={l} href={h}>{l}</Link>)}
           <Link className="btn gold" href="/properties">Find Your Property</Link>
-          <p>{site.phone} \u00b7 {site.email}</p>
+          <p>{site.phone} · {site.email}</p>
         </div>
       )}
     </header>

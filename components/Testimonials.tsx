@@ -18,16 +18,16 @@ export default function Testimonials() {
         {testimonials.map((t) => (
           <figure key={t.name} className="testi-item">
             <Stars n={t.rating} />
-            <blockquote>\u201c{t.text}\u201d</blockquote>
-            <figcaption><b>{t.name}</b> \u00b7 {t.transaction} \u00b7 {t.location}</figcaption>
-            <span className="tag">Fictional demo review \u2014 replace with verified reviews</span>
+            <blockquote>“{t.text}”</blockquote>
+            <figcaption><b>{t.name}</b> · {t.transaction} · {t.location}</figcaption>
+            <span className="tag">Fictional demo review — replace with verified reviews</span>
           </figure>
         ))}
       </div>
       <div className="testi-nav">
-        <button onClick={() => setI((i - 1 + n) % n)} aria-label="Previous review">\u2039</button>
+        <button onClick={() => setI((i - 1 + n) % n)} aria-label="Previous review">‹</button>
         {testimonials.map((_, k) => <i key={k} className={k === i ? 'on' : ''} onClick={() => setI(k)} />)}
-        <button onClick={() => setI((i + 1) % n)} aria-label="Next review">\u203a</button>
+        <button onClick={() => setI((i + 1) % n)} aria-label="Next review">›</button>
       </div>
     </div>
   );

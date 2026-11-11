@@ -14,12 +14,12 @@ export default function PropertyCard({ p, layout = 'grid' }: { p: Property; layo
     <article className={'card ' + layout}>
       <div className="card-media">
         <div className="slides" style={{ transform: `translateX(-${i * 100}%)` }}>
-          {p.images.map((s, k) => <img key={k} src={s} alt={`${p.name} \u2014 photo ${k + 1}`} loading="lazy" />)}
+          {p.images.map((s, k) => <img key={k} src={s} alt={`${p.name} — photo ${k + 1}`} loading="lazy" />)}
         </div>
         <span className={'badge ' + p.status.replace(' ', '').toLowerCase()}>{p.status}</span>
         <FavButton slug={p.slug} />
-        <button type="button" className="arrow l" aria-label="Previous photo" onClick={go(-1)}>\u2039</button>
-        <button type="button" className="arrow r" aria-label="Next photo" onClick={go(1)}>\u203a</button>
+        <button type="button" className="arrow l" aria-label="Previous photo" onClick={go(-1)}>‹</button>
+        <button type="button" className="arrow r" aria-label="Next photo" onClick={go(1)}>›</button>
         <div className="dots">{p.images.map((_, k) => <i key={k} className={k === i ? 'on' : ''} />)}</div>
       </div>
       <div className="card-body">

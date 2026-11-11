@@ -35,8 +35,8 @@ export default function Footer() {
         </div>
       </div>
       <div className="wrap fbottom">
-        <div className="eho"><span className="eho-mark" aria-hidden>\u2302</span><p><strong>Equal Housing Opportunity.</strong> We are pledged to the letter and spirit of U.S. policy for the achievement of equal housing opportunity. We do not discriminate on the basis of race, color, religion, sex, handicap, familial status or national origin.</p></div>
-        <div className="flinks"><span>\u00a9 {new Date().getFullYear()} {site.name} All rights reserved.</span><Link href="/legal/privacy">Privacy Policy</Link><Link href="/legal/terms">Terms &amp; Conditions</Link><Link href="/legal/fair-housing">Fair Housing</Link></div>
+        <div className="eho"><span className="eho-mark" aria-hidden>⌂</span><p><strong>Equal Housing Opportunity.</strong> We are pledged to the letter and spirit of U.S. policy for the achievement of equal housing opportunity. We do not discriminate on the basis of race, color, religion, sex, handicap, familial status or national origin.</p></div>
+        <div className="flinks"><span>© {new Date().getFullYear()} {site.name} All rights reserved.</span><Link href="/legal/privacy">Privacy Policy</Link><Link href="/legal/terms">Terms &amp; Conditions</Link><Link href="/legal/fair-housing">Fair Housing</Link></div>
         <p className="muted small">Demo template. All properties, agents, prices and reviews are fictional.</p>
       </div>
     </footer>

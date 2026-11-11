@@ -20,17 +20,17 @@ export function Gallery({ images, name }: { images: string[]; name: string }) {
       <div className="gal">
         {images.slice(0, 4).map((s, k) => (
           <button key={k} type="button" className={'gal-' + k} onClick={() => setOpen(k)} aria-label={'Open photo ' + (k + 1)}>
-            <img src={s} alt={`${name} \u2014 photo ${k + 1}`} />
+            <img src={s} alt={`${name} — photo ${k + 1}`} />
             {k === 3 && <span className="gal-more">View all {n} photos</span>}
           </button>
         ))}
       </div>
       {open !== null && (
         <div className="lb" role="dialog" aria-modal="true" aria-label="Photo gallery">
-          <button className="lb-x" onClick={() => setOpen(null)} aria-label="Close">\u00d7</button>
-          <button className="lb-a l" onClick={() => setOpen((open - 1 + n) % n)} aria-label="Previous">\u2039</button>
-          <img src={images[open]} alt={`${name} \u2014 photo ${open + 1}`} />
-          <button className="lb-a r" onClick={() => setOpen((open + 1) % n)} aria-label="Next">\u203a</button>
+          <button className="lb-x" onClick={() => setOpen(null)} aria-label="Close">×</button>
+          <button className="lb-a l" onClick={() => setOpen((open - 1 + n) % n)} aria-label="Previous">‹</button>
+          <img src={images[open]} alt={`${name} — photo ${open + 1}`} />
+          <button className="lb-a r" onClick={() => setOpen((open + 1) % n)} aria-label="Next">›</button>
           <p className="lb-c">{open + 1} / {n}</p>
         </div>
       )}
